@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -118,11 +119,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  await launchURL(
-                      'comgooglemaps://saddr=33.5918,-7.5984&daddr=33.5818,-7,5884&directionmode=walking');
+                  _model.apiResulto0h = await TestAPICall.call();
+                  if ((_model.apiResulto0h?.succeeded ?? true)) {
+                    context.safePop();
+                  }
+
+                  setState(() {});
                 },
                 text: FFLocalizations.of(context).getText(
-                  's746kam6' /* Button */,
+                  'adji63cr' /* Button */,
                 ),
                 options: FFButtonOptions(
                   height: 40.0,

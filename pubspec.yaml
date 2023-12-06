@@ -27,6 +27,7 @@ dependencies:
     sdk: flutter
   auto_size_text: 3.0.0
   cached_network_image: 3.2.1
+  equatable: 2.0.5
   flutter_animate: 4.1.1+1
   flutter_cache_manager: 3.3.1
   flutter_plugin_android_lifecycle: 2.0.17
@@ -45,6 +46,7 @@ dependencies:
   google_maps_flutter_web: 0.5.4+2
   intl: 0.18.1
   json_path: 0.6.2
+  mime_type: 1.0.0
   page_transition: 2.1.0
   path_provider: 2.0.14
   path_provider_android: 2.0.25
