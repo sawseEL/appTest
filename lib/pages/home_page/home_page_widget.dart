@@ -20,11 +20,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+        .then((loc) => setState(() => currentUserLocationValue = loc));
   }
 
   @override
@@ -41,6 +45,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         SystemUiOverlayStyle(
           statusBarBrightness: Theme.of(context).brightness,
           systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
         ),
       );
     }
@@ -80,7 +101,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   controller: _model.googleMapsController,
                   onCameraIdle: (latLng) => _model.googleMapsCenter = latLng,
                   initialLocation: _model.googleMapsCenter ??=
-                      LatLng(13.106061, -59.613158),
+                      currentUserLocationValue!,
                   markerColor: GoogleMarkerColor.violet,
                   mapType: MapType.normal,
                   style: GoogleMapStyle.standard,
