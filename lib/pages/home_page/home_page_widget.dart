@@ -119,10 +119,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               FFButtonWidget(
                 onPressed: () async {
                   await launchURL(
-                      'https://www.google.com/maps/dir/?api=1&origine=33.5918,-7.5984&destination=33.5818,-7,5884&travelmode=walking');
+                      'https://maps.apple.com/&saddr=33.5918,-7.5984&daddr=33.5818,-7,5884&dirflg=w');
                 },
                 text: FFLocalizations.of(context).getText(
-                  'qdwgnkng' /* Button */,
+                  'kxq690ab' /* Button */,
                 ),
                 options: FFButtonOptions(
                   height: 40.0,
